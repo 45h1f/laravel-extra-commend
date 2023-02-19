@@ -1,0 +1,54 @@
+{
+    "name": "ashiful/exco",
+    "description": "Laravel Extra Command",
+    "keywords": [
+        "ashiful",
+        "exco"
+    ],
+    "homepage": "https://github.com/ashiful/exco",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ashiful Islam",
+            "email": "ashiful134@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ashiful\\Exco\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ashiful\\Exco\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ashiful\\Exco\\ExcoServiceProvider"
+            ],
+            "aliases": {
+                "Exco": "Ashiful\\Exco\\ExcoFacade"
+            }
+        }
+    }
+}
