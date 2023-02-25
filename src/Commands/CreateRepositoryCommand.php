@@ -56,7 +56,7 @@ class CreateRepositoryCommand extends CommandGenerator
 
     protected function getDestinationFilePath(): string
     {
-        return app_path() . $this->resolveNamespace() . '/Repositories/Eloquent' . '/' . $this->getRepositoryName() . '.php';
+        return app_path() . $this->resolveNamespace() . '/Repositories' . '/' . $this->getRepositoryName() . '.php';
     }
 
     protected function getInterfaceName(): string
@@ -65,7 +65,7 @@ class CreateRepositoryCommand extends CommandGenerator
     }
     protected function interfaceDestinationPath(): string
     {
-        return app_path() . $this->resolveNamespace() . "/Repositories" . '/' . $this->getInterfaceName() . '.php';
+        return app_path() . $this->resolveNamespace() . "/Interfaces" . '/' . $this->getInterfaceName() . '.php';
     }
 
     private function getRepositoryNameWithoutNamespace(): string
@@ -86,7 +86,7 @@ class CreateRepositoryCommand extends CommandGenerator
     public function getDefaultInterfaceNamespace(): string
     {
         $configNamespace = $this->getRepositoryNamespaceFromConfig();
-        return "$configNamespace\\Repositories";
+        return "$configNamespace\\Interfaces";
     }
 
     protected function getStubFilePath(): string
@@ -103,7 +103,7 @@ class CreateRepositoryCommand extends CommandGenerator
     protected function getTemplateContents(): string
     {
         return (new GenerateFile(__DIR__ . $this->getStubFilePath(), [
-            'CLASS_NAMESPACE' => $this->getClassNamespace(). '\\Eloquent',
+            'CLASS_NAMESPACE' => $this->getClassNamespace(),
             'INTERFACE_NAMESPACE' => $this->getInterfaceNamespace() . '\\' . $this->getInterfaceNameWithoutNamespace(),
             'CLASS' => $this->getRepositoryNameWithoutNamespace(),
             'INTERFACE' => $this->getInterfaceNameWithoutNamespace()
